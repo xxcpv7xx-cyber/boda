@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boda Tatiana & Inti Tupac</title>
+    <title>Boda Tatiana & Inti Tupac • 10.10.2026</title>
+
+    <!-- Etiquetas para que WhatsApp muestre tu miniatura elegante -->
+    <meta property="og:title" content="Boda Tatiana & Inti Tupac • 10.10.2026">
+    <meta property="og:description" content="Comienza nuestro capítulo más hermoso y queremos escribirlo contigo. Toca para ver la invitación.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/xxcpv7xx-cyber/bodamp3/main/portada.jpeg">
+    <meta property="og:url" content="https://tinyurl.com/BodaTati-Inti">
+    <meta property="og:type" content="website">
+
     <!-- Fuentes tipográficas de alta gama -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -647,7 +655,6 @@
                 music.play().then(() => {
                     isPlaying = true;
                     musicIcon.innerHTML = playIconSvg;
-                    // Desvanecer sutilmente la etiqueta de texto cuando ya sonó
                     if (musicHint) {
                         musicHint.style.transition = "opacity 0.5s ease";
                         musicHint.style.opacity = "0";
