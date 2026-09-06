@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda Tatiana & Inti Tupac</title>
+    <!-- Fuentes tipográficas de alta gama -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold-gradient: linear-gradient(135deg, #a37c2d 0%, #d4af37 30%, #8c6820 60%, #e5c158 80%, #735414 100%);
+            --gold-subtle: #a37d33;
+            --gold-dark: #7a5a1f;
+            --bg-texture: #e8e0d0;
+            --card-cream: #f7f1e3;
+            --text-main: #28231d;
+            --text-muted: #4a4036;
+            --espresso-dark: #2a231c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-texture);
+            background-image: 
+                radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0),
+                radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 15px;
+        }
+
+        /* Tarjeta Principal */
+        .invitation-card {
+            background-color: var(--card-cream);
+            background-image: 
+                radial-gradient(rgba(163, 125, 51, 0.07) 1px, transparent 0),
+                radial-gradient(rgba(61, 53, 46, 0.04) 1px, #f7f1e3 0);
+            background-size: 12px 12px;
+            background-position: 0 0, 6px 6px;
+            width: 100%;
+            max-width: 580px;
+            border-radius: 16px;
+            padding: 45px 36px;
+            box-shadow: 
+                0 18px 40px rgba(26, 22, 19, 0.1),
+                0 6px 16px rgba(0, 0, 0, 0.05);
+            position: relative;
+            text-align: center;
+            border: 1px solid rgba(163, 125, 51, 0.35);
+        }
+
+        /* Marco metálico dorado doble */
+        .invitation-card::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1.5px solid transparent;
+            border-image: var(--gold-gradient) 1;
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        .invitation-card::after {
+            content: "";
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            border: 1px solid rgba(163, 125, 51, 0.3);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .name {
+            font-family: 'Alex Brush', cursive;
+            font-size: 64px;
+            color: var(--text-main);
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        .names-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 12px 0 16px 0;
+        }
+
+        .names-divider::before,
+        .names-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-subtle), transparent);
+            max-width: 100px;
+        }
+
+        .divider-ornament {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 400;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .subtitle-romantic {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 19px;
+            color: var(--gold-dark);
+            margin-top: 15px;
+            margin-bottom: 14px;
+            line-height: 1.45;
+            font-weight: 500;
+        }
+
+        .subtitle-blessing {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 30px;
+            padding: 0 10px;
+            font-weight: 400;
+        }
+
+        /* Contador Regresivo */
+        .countdown-box {
+            background: rgba(235, 226, 209, 0.6);
+            border-radius: 12px;
+            padding: 20px 16px;
+            margin-bottom: 35px;
+            border: 1px solid rgba(163, 125, 51, 0.35);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .countdown-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 34px;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .time-block {
+            background: linear-gradient(145deg, #332b23, #1c1713);
+            color: #ffffff;
+            border-radius: 8px;
+            width: 70px;
+            padding: 10px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .time-number {
+            font-family: 'Cinzel', serif;
+            font-size: 25px;
+            font-weight: 600;
+            display: block;
+            line-height: 1;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .time-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            margin-top: 4px;
+            display: block;
+            color: #f7f1e3;
+        }
+
+        .date-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 35px;
+        }
+
+        .date-col-side {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            font-weight: 600;
+            width: 100px;
+            text-align: center;
+            border-right: 1.5px solid var(--gold-subtle);
+            padding-right: 16px;
+        }
+
+        .date-col-side.right {
+            border-right: none;
+            border-left: 1.5px solid var(--gold-subtle);
+            padding-right: 0;
+            padding-left: 16px;
+        }
+
+        .date-col-center {
+            text-align: center;
+        }
+
+        .date-month {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold-dark);
+            font-weight: 600;
+        }
+
+        .date-day {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            color: var(--text-main);
+            line-height: 0.85;
+            margin: 4px 0;
+            font-weight: 500;
+        }
+
+        .date-year {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .ceremony-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 42px;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+
+        .ceremony-place {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .ceremony-address {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: #ffffff;
+            border: 1.5px solid var(--gold-subtle);
+            border-radius: 50%;
+            margin-top: 14px;
+            margin-bottom: 30px;
+            color: var(--espresso-dark);
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .map-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(163, 125, 51, 0.35);
+            background: #fffdf9;
+        }
+
+        .rsvp-text {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--gold-dark);
+            font-weight: 600;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .rsvp-text::before, .rsvp-text::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background: var(--gold-subtle);
+        }
+
+        .rsvp-text::before { left: -40px; }
+        .rsvp-text::after { right: -40px; }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #332b23 0%, #1c1713 100%);
+            color: #ffffff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px 32px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            width: 100%;
+            max-width: 340px;
+            margin-bottom: 35px;
+            border: 1px solid var(--gold-subtle);
+            box-shadow: 0 6px 18px rgba(26, 22, 19, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(163, 125, 51, 0.35);
+            background: linear-gradient(135deg, #42382e 0%, #29221c 100%);
+        }
+
+        .whatsapp-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .details-grid {
+            display: flex;
+            gap: 24px;
+            border-top: 1px solid rgba(163, 125, 51, 0.35);
+            padding-top: 25px;
+            text-align: left;
+        }
+
+        .detail-col {
+            flex: 1;
+        }
+
+        .detail-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .detail-icon {
+            color: var(--gold-subtle);
+            font-size: 14px;
+        }
+
+        .detail-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 25px;
+            color: var(--text-main);
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .detail-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .dress-code-highlight {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Contenedor flotante discreto con guía de texto sutil */
+        .music-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .music-hint {
+            background: var(--card-cream);
+            border: 1px solid var(--gold-subtle);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gold-dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            white-space: nowrap;
+            animation: pulse-hint 2s infinite;
+        }
+
+        @keyframes pulse-hint {
+            0% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.03); }
+            100% { opacity: 0.8; transform: scale(1); }
+        }
+
+        .music-toggle {
+            background: var(--card-cream);
+            border: 1.5px solid var(--gold-subtle);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.08);
+            background: #fffdf9;
+        }
+
+        .music-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--gold-dark);
+        }
+
+        @media (max-width: 480px) {
+            .name { font-size: 52px; }
+            .date-day { font-size: 58px; }
+            .time-block { width: 56px; }
+            .time-number { font-size: 20px; }
+            .details-grid { flex-direction: column; gap: 20px; }
+            .invitation-card { padding: 35px 20px; }
+            .date-section { gap: 14px; }
+            .date-col-side { width: 75px; padding-right: 10px; }
+            .date-col-side.right { padding-left: 10px; }
+            .music-hint { font-size: 10px; padding: 5px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio conectado directamente a tu GitHub Pages -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://xxcpv7xx-cyber.github.io/bodamp3/boda.mp3" type="audio/mpeg">
+        Tu navegador no soporta elementos de audio.
+    </audio>
+
+    <!-- Botón flotante discreto con etiqueta de texto guiadora -->
+    <div class="music-container" id="music-container">
+        <div class="music-hint" id="music-hint">♪ Toca para activar la música</div>
+        <div id="music-btn" class="music-toggle" title="Silenciar / Reproducir música">
+            <svg id="music-icon" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        </div>
+    </div>
+
+    <div class="invitation-card">
+        
+        <!-- Nombres -->
+        <h1 class="name">Tatiana</h1>
+        <div class="names-divider">
+            <span class="divider-ornament">∞</span>
+        </div>
+        <h1 class="name">Inti Tupac</h1>
+
+        <!-- Textos -->
+        <p class="subtitle-romantic">
+            Comienza nuestro capítulo más hermoso y queremos escribirlo contigo.
+        </p>
+
+        <p class="subtitle-blessing">
+            Con la bendición de Dios y el amor de nuestras familias,<br>
+            tenemos el honor de invitarlos a celebrar nuestro matrimonio.
+        </p>
+
+        <!-- Contador Regresivo -->
+        <div class="countdown-box">
+            <div class="countdown-title">Falta muy poco...</div>
+            <div class="timer-grid">
+                <div class="time-block">
+                    <span id="days" class="time-number">00</span>
+                    <span class="time-label">Días</span>
+                </div>
+                <div class="time-block">
+                    <span id="hours" class="time-number">00</span>
+                    <span class="time-label">Horas</span>
+                </div>
+                <div class="time-block">
+                    <span id="minutes" class="time-number">00</span>
+                    <span class="time-label">Min</span>
+                </div>
+                <div class="time-block">
+                    <span id="seconds" class="time-number">00</span>
+                    <span class="time-label">Seg</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fecha -->
+        <div class="date-section">
+            <div class="date-col-side">Sábado</div>
+            <div class="date-col-center">
+                <div class="date-month">7:00 PM</div>
+                <div class="date-day">10</div>
+                <div class="date-year">2026</div>
+            </div>
+            <div class="date-col-side right">Octubre</div>
+        </div>
+
+        <!-- Ceremonia -->
+        <div class="ceremony-title">Ceremonia Religiosa</div>
+        <div class="ceremony-place">Parroquia Santa María de los Ángeles</div>
+        <div class="ceremony-address">Cra. 46 #15 Sur-93, El Poblado, Medellín, Antioquia</div>
+        
+        <!-- Mapa -->
+        <a class="map-link" href="https://maps.google.com/?q=Parroquia+Santa+Maria+de+los+Angeles+Medellin" target="_blank" title="Abrir ubicación en Google Maps">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7a5a1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+        </a>
+
+        <!-- RSVP / WhatsApp -->
+        <br>
+        <div class="rsvp-text">Agradecemos confirmar asistencia</div>
+        <br>
+        <a class="whatsapp-btn" href="https://wa.me/573024298560?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Tatiana%20e%20Inti." target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c0-5.445 4.43-9.874 9.877-9.874 2.634 0 5.11 1.027 6.97 2.889a9.83 9.83 0 012.88 6.977c-.001 5.447-4.431 9.876-9.873 9.876m0-18.067c-4.52 0-8.204 3.682-8.204 8.2 0 1.58.45 3.084 1.298 4.372l-.565 2.062 2.112-.554a8.18 8.18 0 004.223 1.18h.003c4.52 0 8.204-3.682 8.204-8.2 0-2.19-.854-4.248-2.406-5.8-1.552-1.551-3.612-2.406-5.802-2.406"></path>
+            </svg>
+            <span>Confirmar por WhatsApp</span>
+        </a>
+
+        <!-- Detalles -->
+        <div class="details-grid">
+            <div class="detail-col">
+                <div class="detail-header">
+                    <span class="detail-icon">✉</span>
+                    <span class="detail-title">Tu compañía es nuestro mejor regalo</span>
+                </div>
+                <p class="detail-desc">
+                    Si desean tener un detalle con nosotros, habrá una caja de sobres en la recepción para quienes quieran colaborar con nuestra nueva vida juntos.
+                </p>
+            </div>
+
+            <div class="detail-col">
+                <div class="detail-header">
+                    <span class="detail-icon">✿</span>
+                    <span class="detail-title">Código de vestimenta</span>
+                </div>
+                <p class="detail-desc">
+                    <span class="dress-code-highlight">Formal y Elegante (Colores Pastel).</span>
+                    Agradecemos vestir de preferencia con tonos pastel.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script de control -->
+    <script>
+        const targetDate = new Date("October 10, 2026 19:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+                document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+                document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+            } else {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        const music = document.getElementById("bg-music");
+        const musicBtn = document.getElementById("music-btn");
+        const musicIcon = document.getElementById("music-icon");
+        const musicHint = document.getElementById("music-hint");
+        let isPlaying = false;
+
+        const playIconSvg = '<path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>';
+        const muteIconSvg = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+
+        function playAudioOnInteraction() {
+            if (!isPlaying) {
+                music.play().then(() => {
+                    isPlaying = true;
+                    musicIcon.innerHTML = playIconSvg;
+                    // Desvanecer sutilmente la etiqueta de texto cuando ya sonó
+                    if (musicHint) {
+                        musicHint.style.transition = "opacity 0.5s ease";
+                        musicHint.style.opacity = "0";
+                        setTimeout(() => musicHint.style.display = "none", 500);
+                    }
+                }).catch(err => {
+                    console.log("Esperando interacción.");
+                });
+            }
+        }
+
+        window.addEventListener("click", playAudioOnInteraction, { once: true });
+        window.addEventListener("touchstart", playAudioOnInteraction, { once: true });
+
+        musicBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (music.paused) {
+                music.play();
+                isPlaying = true;
+                musicIcon.innerHTML = playIconSvg;
+                if (musicHint) musicHint.style.display = "none";
+            } else {
+                music.pause();
+                isPlaying = false;
+                musicIcon.innerHTML = muteIconSvg;
+            }
+        });
+    </script>
+</body>
+</html>
