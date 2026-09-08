@@ -6,10 +6,10 @@
     <title>Boda Tatiana & Inti Tupac • 10.10.2026</title>
 
     <!-- Etiquetas para que WhatsApp muestre tu miniatura elegante -->
-    <meta property="og:title" content="Boda Tatiana e Inti Tupac">
-    <meta property="og:description" content="Invitado especial boda 10-10-26 Toca para ver la invitación.">
+    <meta property="og:title" content="Boda Tatiana & Inti Tupac • 10.10.2026">
+    <meta property="og:description" content="Comienza nuestro capítulo más hermoso y queremos escribirlo contigo. Toca para ver la invitación.">
     <meta property="og:image" content="https://xxcpv7xx-cyber.github.io/boda/portada.jpeg">
-    <meta property="og:url" content="https://xxcpv7xx-cyber.github.io/boda/">
+    <meta property="og:url" content="https://tinyurl.com/BodaTati-Inti">
     <meta property="og:type" content="website">
 
     <!-- Fuentes tipográficas de alta gama -->
@@ -301,7 +301,7 @@
             border: 1.5px solid var(--gold-subtle);
             border-radius: 50%;
             margin-top: 14px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             color: var(--espresso-dark);
             text-decoration: none;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -312,6 +312,27 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(163, 125, 51, 0.35);
             background: #fffdf9;
+        }
+
+        /* Estilo para la foto miniatura del lugar */
+        .location-thumb {
+            width: 100%;
+            max-width: 160px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1.5px solid var(--gold-subtle);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin: 12px auto 10px auto;
+            display: block;
+        }
+
+        .section-separator {
+            width: 60px;
+            height: 1px;
+            background: var(--gold-subtle);
+            margin: 25px auto;
+            opacity: 0.5;
         }
 
         .rsvp-text {
@@ -423,7 +444,7 @@
             margin-bottom: 4px;
         }
 
-        /* Contenedor flotante discreto con guía de texto sutil */
+        /* Música flotante */
         .music-container {
             position: fixed;
             bottom: 20px;
@@ -495,13 +516,13 @@
 </head>
 <body>
 
-    <!-- Audio conectado al repositorio único 'boda' -->
+    <!-- Audio -->
     <audio id="bg-music" loop preload="auto">
         <source src="https://xxcpv7xx-cyber.github.io/boda/boda.mp3" type="audio/mpeg">
         Tu navegador no soporta elementos de audio.
     </audio>
 
-    <!-- Botón flotante discreto con etiqueta de texto guiadora -->
+    <!-- Botón flotante -->
     <div class="music-container" id="music-container">
         <div class="music-hint" id="music-hint">♪ Toca para activar la música</div>
         <div id="music-btn" class="music-toggle" title="Silenciar / Reproducir música">
@@ -567,8 +588,22 @@
         <div class="ceremony-place">Parroquia Santa María de los Ángeles</div>
         <div class="ceremony-address">Cra. 46 #15 Sur-93, El Poblado, Medellín, Antioquia</div>
         
-        <!-- Mapa -->
         <a class="map-link" href="https://maps.google.com/?q=Parroquia+Santa+Maria+de+los+Angeles+Medellin" target="_blank" title="Abrir ubicación en Google Maps">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7a5a1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+        </a>
+
+        <!-- Recepción -->
+        <div class="section-separator"></div>
+        
+        <div class="ceremony-title">Recepción</div>
+        <img src="https://xxcpv7xx-cyber.github.io/boda/recepcion.jpeg" alt="Banquetes El Castillo Real" class="location-thumb">
+        <div class="ceremony-place">Banquetes El Castillo Real</div>
+        <div class="ceremony-address">Carrera 48 #66-08, Medellín, Antioquia</div>
+        
+        <a class="map-link" href="https://maps.google.com/?q=Carrera+48+%2366-08+Medellin" target="_blank" title="Abrir ubicación de la recepción">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7a5a1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
